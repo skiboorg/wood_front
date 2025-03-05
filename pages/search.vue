@@ -10,6 +10,12 @@ const products = ref([])
 const query = computed(()=>route.query)
 products.value= await $api(`/api/shop/search?q=${query.value.q}`)
 
+watch( () => route.fullPath, async () => {
+  products.value= await $api(`/api/shop/search?q=${query.value.q}`)
+});
+
+
+
 </script>
 
 <template>
