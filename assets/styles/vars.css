@@ -1,0 +1,18 @@
+:root {
+    --p-primary-color: #FF550A !important;          /* Основной цвет success */
+    --success-color-hover: #e65c34;    /* Цвет при наведении */
+    --success-color-text: #FFFFFF;
+    --p-button-label-font-weight: 500 !important;/* Цвет текста */
+}
+
+.p-breadcrumb{
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+.p-breadcrumb-item-link{
+    gap: 0 !important;
+}
+
+h1,h2,h3,h4,h5,h6{
+    text-transform: uppercase;
+}
