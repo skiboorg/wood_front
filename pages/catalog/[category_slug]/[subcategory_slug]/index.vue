@@ -5,7 +5,7 @@ const items = ref([]);
 const {$api} = useNuxtApp()
 const route = useRoute()
 
-const category = ref({})
+const category = ref(null)
 const products = ref([])
 const selected_subcat = ref(null)
 const {category_slug,subcategory_slug} = route.params
@@ -21,7 +21,7 @@ onMounted(async () => {
   items.value = [
     { label: 'Главная', route: '/' },
     { label: 'Каталог', route: '/catalog' },
-    { label: category.value.name, route: '/catalog/category' },
+    { label: category.value.name },
     { label: category.value.sub_categories.find(x=>x.slug===selected_subcat.value).name },
 
   ]
@@ -40,25 +40,22 @@ const subcatChange = async (subcat_slug) => {
   const newPath = `/catalog/${category_slug}/${subcat_slug}`;
   await navigateTo(newPath, { replace: true });
 
-  // await fetchSubCategory()
-
 }
-
-
-
-
 
 </script>
 
 
 
 <template>
-  <div class="container">
+  <div v-if="category" class="container">
   <Breadcrumbs :items="items" />
+    <div class="flex gap-2 items-end mb-4">
+      <h1 class="text-2xl  font-bold">{{category.name}} </h1>
+      <p v-if="category.display_amount" class="text-md font-semibold text-[#7E7E7E]">{{category.display_amount}} товаров</p>
+    </div>
+
     <SubcategoriesBtns :subcategories="category.sub_categories" :selected="selected_subcat" @change="subcatChange"/>
-    <pre>
-      {{category}}
-    </pre>
+
     <ItemsGrid :products="products"/>
   </div>
 </template>

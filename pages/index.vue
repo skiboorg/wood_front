@@ -10,7 +10,7 @@ onBeforeMount(async () => {
 
 <template>
 
-  <section class="bg-[url(offer-bg.jpg)] h-[900px] relative top-[-120px] ">
+  <section class="bg-[url(/offer-bg.jpg)] h-[900px] relative top-[-120px] ">
     <div class="container text-white h-full ">
       <div class="flex flex-col items-start justify-between h-full py-20">
         <p></p>
