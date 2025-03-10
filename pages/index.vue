@@ -2,9 +2,13 @@
 const {$api} = useNuxtApp()
 
 const materials = ref([])
+const faq = ref([])
+const services = ref([])
 
 onBeforeMount(async () => {
   materials.value = await $api('/api/shop/materials')
+  faq.value = await $api('/api/data/faq')
+  services.value = await $api('/api/shop/services')
 })
 </script>
 
@@ -256,14 +260,14 @@ onBeforeMount(async () => {
         </div>
       </div>
       <div class="grid grid-cols-4 gap-3 w-full">
-        <div v-for="i in 8" class="bg-[url(service-bg.jpg)] hover:bg-none flex flex-col items-start justify-between bg-no-repeat bg-center bg-cover p-10 rounded-[10px] h-[340px] group border">
+        <div @click="navigateTo(`/services/${item.slug}`)" v-for="item in services" :style="{ backgroundImage: `url(${item.image})` }" class=" cursor-pointer hover:!bg-none flex flex-col items-start justify-between bg-no-repeat bg-center bg-cover p-10 rounded-[10px] h-[340px] group border">
           <div class="grid grid-cols-4 items-start w-full">
             <div class="col-span-3">
               <div class="flex flex-start gap-4 text-white group-hover:text-black">
                 <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <circle cx="9" cy="9" r="9" fill="#FF550A"/>
                 </svg>
-                <p>Браширование древесины</p>
+                <p>{{item.name}}</p>
               </div>
             </div>
             <div class="hidden group-hover:flex h-[60px] w-[60px] bg-black  items-center justify-center rounded-full justify-self-end">
@@ -272,7 +276,7 @@ onBeforeMount(async () => {
               </svg>
             </div>
           </div>
-          <p class="hidden group-hover:block">Покраска и защита древесины в Москве и МО. Работаем со всеми видами дерева, индивидуальный подход, качественные материалы.</p>
+          <p class="hidden group-hover:block">{{item.short_description}}</p>
         </div>
       </div>
     </div>
@@ -291,6 +295,23 @@ onBeforeMount(async () => {
         </div>
 
 
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="">
+          <img class="w-full h-full object-cover" src="~assets/faq.png" alt="">
+        </div>
+        <Accordion >
+          <AccordionPanel :value="item.id" v-for="item in faq" :key="item.id">
+            <AccordionHeader>{{item.question}}</AccordionHeader>
+            <AccordionContent>
+              <p class="m-0">
+                {{item.answer}}
+            </p>
+            </AccordionContent>
+          </AccordionPanel>
+
+        </Accordion>
       </div>
     </div>
   </section>

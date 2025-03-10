@@ -8,6 +8,12 @@ const uniqueThinNames = ref([])
 const widths = ref([])
 const selected_thin = ref({})
 const selected_width = ref({})
+const name = ref(null)
+const phone = ref(null)
+const visible = ref(false)
+const loading = ref(false)
+const is_send = ref(false)
+const amount = ref(1)
 
 const {product_slug} = route.params
 onMounted(async () => {
@@ -35,8 +41,11 @@ onMounted(async () => {
 
 )
 
+const selected_product_string = computed(()=>{
+  if(!selected_width.value) return
+  return `Толщина ${selected_thin.value.label} мм, ширина ${selected_width.value.width.name} мм, кол-во ${amount.value}`
+})
 
-const value = ref(1)
 
 const thinChange =  (thin) => {
   selected_thin.value.selected = false;
@@ -45,9 +54,44 @@ const thinChange =  (thin) => {
   selected_thin.value.selected = true;
   selected_width.value = widths.value[0]
 }
+
+const sendForm = async () => {
+  loading.value = true
+  await $api(`/api/data/form`, {
+    method: 'POST',
+    body: {
+      name: name.value,
+      phone: phone.value,
+      product:selected_product_string.value
+    }
+  })
+  is_send.value = true
+  loading.value = false
+}
 </script>
 
 <template>
+  <Dialog v-model:visible="visible" modal header="Заявка" class="w-10/12 md:w-1/2" @after-hide="is_send=false">
+    <template v-if="is_send">
+      <p class="text-center font-bold text-2xl">Заявка отправлена</p>
+    </template>
+    <template v-else>
+      <span class="text-surface-500 dark:text-surface-400 block mb-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consectetur facilis id molestiae temporibus? Aliquid consequatur cumque dolorem eligendi hic itaque libero nisi officiis perferendis placeat, reiciendis tenetur ut voluptatibus.</span>
+      <div class="flex items-center gap-4 mb-4">
+        <label for="username" class="font-semibold w-24">ФИО</label>
+        <InputText id="username" v-model="name" class="flex-auto" autocomplete="off" />
+      </div>
+      <div class="flex items-center gap-4 mb-8">
+        <label for="email" class="font-semibold w-24">Телефон</label>
+        <InputText id="email" v-model="phone" class="flex-auto" autocomplete="off" />
+      </div>
+      <div class="flex justify-end gap-2">
+
+        <Button :disabled="!phone" type="button" label="Отправить" @click="sendForm"/>
+      </div>
+    </template>
+
+  </Dialog>
 
     <div class="container">
      <Breadcrumbs :items="items"/>
@@ -102,7 +146,7 @@ const thinChange =  (thin) => {
         </div>
 
         <div class="flex items-end gap-4 ">
-        <InputNumber v-model="value" inputId="horizontal-buttons"  showButtons buttonLayout="horizontal" suffix=" м2" :min="0.1" :step="0.1" mode="decimal" class="text-center" >
+        <InputNumber v-model="amount" inputId="horizontal-buttons"  showButtons buttonLayout="horizontal" suffix=" м2" :min="0.1" :step="0.1" mode="decimal" class="text-center" >
           <template #incrementbuttonicon>
             <span class="pi pi-plus" />
           </template>
@@ -110,7 +154,7 @@ const thinChange =  (thin) => {
             <span class="pi pi-minus" />
           </template>
         </InputNumber>
-          <Button severity="primary" icon="pi pi-chevron-right" rounded />
+          <Button severity="primary" icon="pi pi-chevron-right" rounded @click="visible = true"/>
         </div>
       </div>
     </div>
