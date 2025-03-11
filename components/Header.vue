@@ -10,6 +10,7 @@ const links = [
 
 const route = useRoute()
 const q = ref(null)
+const visible= ref(false)
 const is_index = computed(()=>route.fullPath === '/')
 
 const keyDown = async (key) => {
@@ -18,13 +19,17 @@ const keyDown = async (key) => {
     await navigateTo(`/search?q=${q.value}`, { replace: true });
   }
 }
+watch(() => route.fullPath, () => {
+  console.log('route change')
+  visible.value = false
+});
 
 </script>
 
 <template>
   <div class="container">
     <header :class="is_index ? 'text-gray-300' : 'text-black'" class=" relative z-10">
-      <div class="flex items-center justify-between py-6">
+      <div class="hidden md:flex items-center justify-between py-6">
         <div class="flex gap-4 ">
           <nuxt-link :to="link.url" v-for="link in links">{{link.label}}</nuxt-link>
         </div>
@@ -34,7 +39,7 @@ const keyDown = async (key) => {
           <p> Круглосуточно 24/7</p>
         </div>
       </div>
-      <div class="flex items-center justify-between gap-4">
+      <div class="flex items-center justify-between gap-4 py-3 md:py-0">
         <nuxt-link to="/">
           <svg v-if="is_index" width="187" height="48" viewBox="0 0 187 48" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M32.2327 31.9897L49.0789 2.1546H64.283L40.5646 45.787H23.536L0 2.1546H16.2988L32.2327 31.9897Z" fill="#FF550A"/>
@@ -51,21 +56,44 @@ const keyDown = async (key) => {
 
 
         </nuxt-link>
-        <nuxt-link to="/catalog">
+        <nuxt-link class="hidden md:block" to="/catalog">
           <Button  rounded icon="pi pi-bars" label="Каталог" />
         </nuxt-link>
 
-        <IconField style="flex-grow: 1">
+
+
+        <IconField class="hidden md:block" style="flex-grow: 1">
           <InputText style="border-radius: 30px;width: 100%" v-model="q" placeholder="Поиск по сайту VSM" @keydown="keyDown"/>
           <InputIcon class="pi pi-search" />
 
         </IconField>
+        <Button @click="visible=true" class="block md:hidden" rounded icon="pi pi-bars"  />
 <!--        <Button  rounded severity="secondary" icon="pi pi-cart" label="Корзина" />-->
 
       </div>
 
     </header>
   </div>
+  <Drawer v-model:visible="visible" position="right" header=" ">
+
+
+    <div class="flex flex-col gap-4 ">
+      <p>Москва</p>
+      <a href="tel:+7 495 008 88-81">+7 495 008 88-81</a>
+      <p> Круглосуточно 24/7</p>
+      <nuxt-link to="/catalog">
+        <Button fluid rounded icon="pi pi-bars" label="Каталог" />
+      </nuxt-link>
+      <nuxt-link :to="link.url" v-for="link in links">{{link.label}}</nuxt-link>
+
+      <IconField  style="flex-grow: 1">
+        <InputText style="border-radius: 30px;width: 100%" v-model="q" placeholder="Поиск по сайту VSM" @keydown="keyDown"/>
+        <InputIcon class="pi pi-search" />
+      </IconField>
+
+    </div>
+
+ </Drawer>
 </template>
 
 <style scoped>

@@ -14,12 +14,12 @@ onBeforeMount(async () => {
 
 <template>
 
-  <section class="bg-[url(/offer-bg.jpg)] h-[900px] relative top-[-120px] ">
+  <section class="bg-[url(/offer-bg.jpg)] h-[600px] md:h-[900px] relative top-[-90px] md:top-[-120px] ">
     <div class="container text-white h-full ">
       <div class="flex flex-col items-start justify-between h-full py-20">
         <p></p>
         <div class="grid grid-cols-3 gap-4">
-          <p class="col-span-2 font-semibold leading-[85px] text-7xl uppercase">Термодерево: тепло природы в вашем доме</p>
+          <p class="col-span-2 font-semibold md:leading-[85px] text-3xl md:text-7xl uppercase">Термодерево: тепло природы в вашем доме</p>
           <div class="justify-self-end">
             <a class="inline-block mb-3" href="#">
               <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -32,13 +32,13 @@ onBeforeMount(async () => {
             </a>
           </div>
         </div>
-        <div class="grid grid-cols-2 w-full">
-          <div class="flex items-end gap-4">
-            <Button size="large" rounded label="Обратный звонок" />
-            <Button size="large" severity="secondary" rounded label="Рассчитать стоимость" />
-            <Button size="large" severity="secondary" rounded label="Написать нам" />
+        <div class="grid grid-cols-1 md:grid-cols-2 w-full">
+          <div class="flex flex-col md:flex-row items-end gap-4">
+            <Button size="large" fluid rounded label="Обратный звонок" />
+            <Button size="large" fluid severity="secondary" rounded label="Рассчитать стоимость" />
+            <Button size="large" fluid severity="secondary" rounded label="Написать нам" />
           </div>
-          <div class="flex items-end gap-4 justify-self-end">
+          <div class="hidden md:flex items-end gap-4 justify-self-end">
             <img src="~assets/of1.png" alt="">
             <img src="~assets/of2.png" alt="">
           </div>
@@ -47,13 +47,13 @@ onBeforeMount(async () => {
 
     </div>
   </section>
-  <section class="pb-[120px]">
+  <section class="pb-[60px] md:pb-[120px]">
     <div class="container">
       <div class="flex items-center justify-between mb-10">
         <div class="">
-          <p class="font-bold text-7xl uppercase">Каталог</p>
+          <p class="font-bold text-3xl md:text-7xl uppercase">Каталог</p>
         </div>
-        <div class="">
+        <div class="hidden md:block">
           <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
             <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
@@ -65,13 +65,13 @@ onBeforeMount(async () => {
       <Catalog/>
     </div>
   </section>
-  <section class="bg-[#efefef] py-[120px]">
+  <section class="bg-[#efefef] py-[60px] md:py-[120px]">
     <div class="container">
       <div class="flex items-center justify-between mb-10">
         <div class="">
-          <p class="font-bold text-7xl uppercase">Породы</p>
+          <p class="font-bold text-3xl md:text-7xl uppercase">Породы</p>
         </div>
-        <div class="">
+        <div class="hidden md:block">
           <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
             <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
@@ -113,13 +113,13 @@ onBeforeMount(async () => {
     </div>
 
   </section>
-  <section class="py-[120px]">
+  <section class="py-[60px] md:py-[120px]">
     <div class="container">
       <div class="flex items-center justify-between mb-10">
         <div class="">
-          <p class="font-bold text-7xl uppercase">Преимущества продукции</p>
+          <p class="font-bold text-3xl md:text-7xl uppercase">Преимущества продукции</p>
         </div>
-        <div class="">
+        <div class="hidden md:block">
           <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
             <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
@@ -128,9 +128,9 @@ onBeforeMount(async () => {
 
 
       </div>
-      <div class="grid grid-cols-4 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-3">
         <div class="border p-8">
-          <div class="mb-32">
+          <div class="mb-16 md:mb-32">
             <svg width="72" height="72" viewBox="0 0 72 72" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect width="72" height="72" rx="20" fill="#EFEFEF"/>
               <path d="M48.5385 22.5903L46.9172 23.1308C44.1385 24.0962 41.1712 24.3925 38.2565 23.9955C35.1937 23.5202 32.0588 23.9426 29.231 25.2115C27.7319 25.8498 26.4163 26.853 25.404 28.1297C24.3916 29.4063 23.7146 30.9159 23.4347 32.5211C23.15 34.0646 23.1791 35.6498 23.5204 37.1819C23.8616 38.7139 24.508 40.1616 25.4209 41.4384C25.3398 41.7222 25.2587 42.0059 25.1912 42.2896C24.6424 44.6231 24.3703 47.013 24.3805 49.41H27.0828C27.2098 47.448 27.4761 45.4975 27.8799 43.5732C29.7545 44.5855 31.8567 45.1017 33.987 45.0729C35.9738 45.0716 37.9401 44.6719 39.7698 43.8975C50.0518 39.5063 48.7006 24.9007 48.7006 24.2927L48.5385 22.5903ZM38.7159 41.4114C35.1895 42.9112 30.974 42.6544 28.6095 40.8034C29.0091 39.4672 29.5575 38.1801 30.2444 36.9662C30.7783 36.0926 31.4083 35.2814 32.1224 34.5477C32.8522 33.8062 33.6741 33.1614 34.568 32.6291C36.415 31.5247 38.4635 30.799 40.5939 30.4944V29.1433C38.1427 29.0584 35.7065 29.5586 33.4871 30.6025C31.2177 31.7098 29.2932 33.4148 27.9204 35.534C27.4113 36.3435 26.9598 37.1878 26.5693 38.0606C25.9431 36.4587 25.7656 34.7163 26.0559 33.021C26.2461 31.8341 26.7354 30.7151 27.4776 29.7696C28.2199 28.8241 29.1906 28.0831 30.2984 27.6165C31.9138 26.8614 33.6765 26.4738 35.4597 26.4816C36.2974 26.4816 37.1216 26.5626 37.9863 26.6302C40.6944 26.9796 43.4439 26.8192 46.093 26.1573C45.9984 29.8864 45.3229 38.6011 38.7159 41.4114Z" fill="#1E1E1E"/>
@@ -139,7 +139,7 @@ onBeforeMount(async () => {
           <p class="text-3xl uppercase font-medium">Экологические преимущества</p>
         </div>
         <div class="border p-8">
-          <div class="mb-32">
+          <div class="mb-16 md:mb-32">
             <svg width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" width="72" height="72" rx="20" fill="#EFEFEF"/>
               <path d="M36.5 23C29.3318 23 23.5 28.8318 23.5 36C23.5 43.1682 29.3318 49 36.5 49C43.6682 49 49.5 43.1682 49.5 36C49.5 28.8318 43.6682 23 36.5 23ZM36.5 46.4C30.7657 46.4 26.1 41.7343 26.1 36C26.1 30.2657 30.7657 25.6 36.5 25.6C42.2343 25.6 46.9 30.2657 46.9 36C46.9 41.7343 42.2343 46.4 36.5 46.4Z" fill="#1E1E1E"/>
@@ -150,7 +150,7 @@ onBeforeMount(async () => {
           <p class="text-3xl uppercase font-medium">Долговечность и надежность</p>
         </div>
         <div class="border p-8">
-          <div class="mb-32">
+          <div class="mb-16 md:mb-32">
             <svg width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" width="72" height="72" rx="20" fill="#EFEFEF"/>
               <path d="M36.5 23C29.3318 23 23.5 28.8318 23.5 36C23.5 43.1682 29.3318 49 36.5 49C43.6682 49 49.5 43.1682 49.5 36C49.5 28.8318 43.6682 23 36.5 23ZM36.5 46.4C30.7657 46.4 26.1 41.7343 26.1 36C26.1 30.2657 30.7657 25.6 36.5 25.6C42.2343 25.6 46.9 30.2657 46.9 36C46.9 41.7343 42.2343 46.4 36.5 46.4Z" fill="#1E1E1E"/>
@@ -161,7 +161,7 @@ onBeforeMount(async () => {
           <p class="text-3xl uppercase font-medium">Долговечность и надежность</p>
         </div>
         <div class="border p-8">
-          <div class="mb-32">
+          <div class="mb-16 md:mb-32">
             <svg width="73" height="72" viewBox="0 0 73 72" fill="none" xmlns="http://www.w3.org/2000/svg">
               <rect x="0.5" width="72" height="72" rx="20" fill="#EFEFEF"/>
               <path d="M36.4982 49C42.5251 49 46.8984 44.4915 46.8984 38.2799C46.8984 30.1781 37.6448 23.5193 37.2509 23.2398C37.0313 23.084 36.7689 23.0002 36.4997 23C36.2305 22.9998 35.9678 23.0831 35.748 23.2385C35.3541 23.5154 26.0979 30.1534 26.0979 38.2747C26.0979 44.4889 30.4712 49 36.4982 49ZM36.4969 25.9374C38.5834 27.6144 44.2984 32.7158 44.2984 38.2799C44.2984 43.0614 41.0899 46.3999 36.4982 46.3999C31.9064 46.3999 28.6979 43.0588 28.6979 38.2747C28.6979 32.6976 34.4103 27.6105 36.4969 25.9374Z" fill="#1E1E1E"/>
@@ -173,20 +173,20 @@ onBeforeMount(async () => {
       </div>
     </div>
   </section>
-  <section class="bg-[#efefef] py-[120px]">
+  <section class="bg-[#efefef] py-[60px] md:py-[120px]">
     <div class="container">
       <div class="flex items-center justify-between mb-10">
         <div class="">
-          <p class="font-bold text-7xl uppercase">Отзывы</p>
+          <p class="font-bold text-3xl md:text-7xl uppercase">Отзывы</p>
         </div>
-        <div class="">
+        <div class="hidden md:block">
           <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
             <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
           </svg>
         </div>
       </div>
-      <div class="grid grid-cols-5 gap-3">
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-3">
         <div class="p-10 bg-white rounded-[10px]" v-for="i in 5">
           <div class="flex items-start justify-between mb-5">
             <img class="w-[96px] h-[96px] rounded-full object-cover" src="https://placehold.co/400" alt="">
@@ -207,13 +207,13 @@ onBeforeMount(async () => {
       </div>
     </div>
   </section>
-  <section class="py-[120px]">
+  <section class="py-[60px] md:py-[120px]">
     <div class="container">
       <div class="flex items-center justify-between mb-10">
         <div class="">
-          <p class="font-bold text-7xl uppercase">Наши работы</p>
+          <p class="font-bold text-3xl md:text-7xl uppercase">Наши работы</p>
         </div>
-        <div class="">
+        <div class="hidden md:block">
           <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
             <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
@@ -246,20 +246,20 @@ onBeforeMount(async () => {
       </div>
     </div>
   </section>
-  <section class="py-[120px]">
+  <section class="py-[60px] md:py-[120px]">
     <div class="container">
       <div class="flex items-center justify-between mb-10">
         <div class="">
-          <p class="font-bold text-7xl uppercase">УСЛУГИ</p>
+          <p class="font-bold text-3xl md:text-7xl uppercase">УСЛУГИ</p>
         </div>
-        <div class="">
+        <div class="hidden md:block">
           <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
             <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
           </svg>
         </div>
       </div>
-      <div class="grid grid-cols-4 gap-3 w-full">
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-3 w-full">
         <div @click="navigateTo(`/services/${item.slug}`)" v-for="item in services" :style="{ backgroundImage: `url(${item.image})` }" class=" cursor-pointer hover:!bg-none flex flex-col items-start justify-between bg-no-repeat bg-center bg-cover p-10 rounded-[10px] h-[340px] group border">
           <div class="grid grid-cols-4 items-start w-full">
             <div class="col-span-3">
@@ -281,13 +281,13 @@ onBeforeMount(async () => {
       </div>
     </div>
   </section>
-  <section class="py-[120px]">
+  <section class="py-[60px] md:py-[120px]">
     <div class="container">
       <div class="flex items-center justify-between mb-10">
         <div class="">
-          <p class="font-bold text-7xl uppercase">FAQ</p>
+          <p class="font-bold text-3xl md:text-7xl uppercase">FAQ</p>
         </div>
-        <div class="">
+        <div class="hidden md:block">
           <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
             <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
             <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
