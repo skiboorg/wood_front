@@ -12,7 +12,7 @@ useSeoMeta({
   <main class="mt-4">
     <slot></slot>
   </main>
-
+  <Footer/>
   <Toast position="bottom-right"/>
 </template>
 

@@ -58,7 +58,7 @@ const subcatChange = async (subcat_slug) => {
       <ItemsGrid :products="products"/>
       <slot/>
     </main>
-
+    <Footer/>
 </template>
 
 
