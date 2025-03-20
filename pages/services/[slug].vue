@@ -8,6 +8,7 @@ onBeforeMount(async () => {
   service.value = await $api(`/api/shop/service/${route.params.slug}`)
   items.value = [
     { label: 'Главная', route: '/' },
+    { label: 'Услуги', route: '/services' },
     { label: service.value.name }
 
   ]

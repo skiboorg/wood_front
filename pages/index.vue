@@ -1,20 +1,16 @@
 <script setup lang="ts">
 const {$api} = useNuxtApp()
 
-const materials = ref([])
 const faq = ref([])
-const services = ref([])
 
 onBeforeMount(async () => {
-  materials.value = await $api('/api/shop/materials')
   faq.value = await $api('/api/data/faq')
-  services.value = await $api('/api/shop/services')
 })
 </script>
 
 <template>
 
-  <section class="bg-[url(/offer-bg1.jpg)] h-[600px] md:h-[900px] relative top-[-90px] md:top-[-120px] ">
+  <section class="bg-[url(/offer-bg1.jpg)] h-[600px] md:h-[900px] relative top-[-90px] md:top-[-140px] ">
     <div class="container text-white h-full ">
       <div class="flex flex-col items-start justify-between h-full py-20">
         <p></p>
@@ -53,14 +49,14 @@ onBeforeMount(async () => {
 
         <div class="grid grid-cols-1 md:grid-cols-2 w-full">
           <div class="flex flex-col md:flex-row items-end gap-2">
-            <Button  fluid rounded label="Рассчитать стоимость для вас" />
-            <a href="#" target="_blank" class="p-button p-component p-button-secondary p-button-rounded p-button-fluid !text-black">
+            <Button class="!px-6 !py-3"   rounded label="Рассчитать стоимость для вас" />
+            <a href="#" target="_blank" class="p-button p-component p-button-secondary p-button-rounded !px-4  !py-3 !text-black">
               <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M10.0005 0C15.5233 0 20.0005 4.47715 20.0005 10C20.0005 15.5228 15.5233 20 10.0005 20C8.16661 20 6.44802 19.5064 4.97037 18.6447L0.00466847 20L1.35663 15.0315C0.494448 13.5536 0.000488281 11.8345 0.000488281 10C0.000488281 4.47715 4.47764 0 10.0005 0ZM6.39183 5.30833C6.26244 5.31742 6.13558 5.34902 6.02008 5.40811C5.93343 5.45244 5.85299 5.51651 5.7266 5.63586C5.60725 5.74855 5.53808 5.84697 5.4652 5.94186C5.0955 6.4232 4.8968 7.01405 4.90049 7.62098C4.9025 8.1116 5.02994 8.5884 5.2312 9.0336C5.63933 9.9364 6.31239 10.8908 7.20145 11.7759C7.41501 11.9885 7.62424 12.2034 7.84985 12.402C8.95331 13.3736 10.2683 14.0742 11.6902 14.4482C11.6902 14.4482 12.2502 14.5342 12.2584 14.5347C12.4439 14.5447 12.6291 14.5313 12.8148 14.5218C13.1061 14.5068 13.3905 14.428 13.6479 14.2909C13.8134 14.2028 13.8917 14.159 14.0306 14.0714C14.0306 14.0714 14.0732 14.0426 14.1554 13.9814C14.2904 13.8808 14.3738 13.81 14.4861 13.6934C14.5689 13.6074 14.6401 13.5058 14.6951 13.3913C14.7733 13.2281 14.852 12.9166 14.8833 12.6579C14.9072 12.4603 14.9 12.3523 14.8974 12.2854C14.8931 12.1778 14.8042 12.0671 14.7068 12.0201L14.1253 11.7587C14.1253 11.7587 13.2558 11.3803 12.724 11.1377C12.6686 11.1124 12.608 11.1007 12.5471 11.097C12.4137 11.0888 12.2642 11.1236 12.1691 11.2238C12.1641 11.2218 12.0979 11.279 11.3744 12.1555C11.3345 12.2032 11.241 12.3069 11.0793 12.2972C11.0549 12.2955 11.0306 12.292 11.0069 12.2858C10.9414 12.2685 10.8776 12.2457 10.8152 12.2193C10.6915 12.1668 10.6481 12.1469 10.5636 12.1105C9.98631 11.8583 9.45651 11.5209 8.98821 11.108C8.86261 10.9974 8.74581 10.8783 8.62541 10.7616C8.20521 10.3543 7.8612 9.9211 7.60528 9.4938C7.59131 9.4705 7.56978 9.4368 7.54659 9.3991C7.50472 9.331 7.45854 9.25 7.44406 9.1944C7.40689 9.0473 7.5055 8.9291 7.5055 8.9291C7.5055 8.9291 7.7489 8.663 7.86199 8.5183C7.97079 8.379 8.06471 8.2428 8.12451 8.1457C8.24231 7.95633 8.27961 7.76062 8.21771 7.60963C7.93715 6.92565 7.64769 6.24536 7.34937 5.56894C7.29049 5.43545 7.11536 5.33846 6.9561 5.32007C6.90216 5.31384 6.84826 5.30758 6.7941 5.30402C6.66004 5.29748 6.52571 5.29892 6.39183 5.30833Z" fill="black"/>
               </svg>
               Мы в WhatsApp
             </a>
-            <a href="#" target="_blank" class="p-button p-component p-button-secondary p-button-rounded p-button-fluid !text-black">
+            <a href="#" target="_blank" class="p-button p-component p-button-secondary p-button-rounded  !px-4 !py-3 !text-black">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M24 12C24 18.6274 18.6274 24 12 24C5.37258 24 0 18.6274 0 12C0 5.37258 5.37258 0 12 0C18.6274 0 24 5.37258 24 12ZM12.4301 8.85895C11.2628 9.34442 8.93016 10.3493 5.43192 11.8734C4.86385 12.0992 4.56629 12.3203 4.53919 12.5363C4.49341 12.9016 4.95073 13.0453 5.5735 13.2412C5.6582 13.2678 5.74598 13.2954 5.83596 13.3247C6.44866 13.5238 7.27285 13.7568 7.70131 13.766C8.08997 13.7744 8.52376 13.6142 9.00266 13.2853C12.2712 11.079 13.9584 9.96384 14.0644 9.93984C14.1391 9.9228 14.2427 9.90156 14.3128 9.96384C14.383 10.0262 14.376 10.1443 14.3687 10.176C14.3233 10.3692 12.5281 12.0382 11.5992 12.9018C11.3221 13.1593 11.0521 13.4224 10.78 13.6847C10.2108 14.2333 9.78396 14.6448 10.8036 15.3168C11.8373 15.998 12.8788 16.6778 13.8869 17.3965C14.384 17.751 14.8308 18.0695 15.3826 18.0187C15.7033 17.9892 16.0345 17.6876 16.2026 16.7884C16.6002 14.6632 17.3816 10.0585 17.5622 8.161C17.5781 7.99476 17.5582 7.782 17.5422 7.6886C17.5262 7.59521 17.4928 7.46213 17.3714 7.36362C17.2276 7.24696 17.0057 7.22236 16.9064 7.22411C16.455 7.23206 15.7626 7.47284 12.4301 8.85895Z" fill="black"/>
               </svg>
@@ -111,36 +107,7 @@ onBeforeMount(async () => {
 
 
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
-      <div class="border" v-for="material in materials" :key="material.id">
-        <div :style="{ backgroundImage: `url(${material.image})` }"
-             class="min-h-[200px] rounded-tl-[10px] rounded-tr-[10px] text-white p-5">
-          <div class="grid grid-cols-2">
-            <p class="font-medium text-3xl leading-[36px]">{{material.name}}</p>
-            <div class="flex flex-col items-end justify-start gap-1">
-              <p class="bg-white/10 border border-white/10 backdrop-blur-md px-3 py-1 rounded-[10px] text-white"
-              v-for="item in material.tags" :key="item.id">
-                {{item.name}}
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="p-5 bg-white rounded-bl-[10px] rounded-br-[10px]">
-          <p class="font-medium mb-3">Рекомендуется для:</p>
-          <div class="flex flex-wrap gap-1 mb-6">
-            <p class="inline-block text-sm text-[#7E7E7E] bg-[#EBEBEB] px-3 py-2 rounded-lg"
-               v-for="item in material.recommend" :key="item.id">
-              {{item.name}}
-            </p>
-          </div>
-          <p class="font-normal mb-8 min-h-[100px]">
-            {{material.short_description}}
-          </p>
-          <Button class="px-4" rounded size="large" severity="contrast" label="В каталог"/>
-
-        </div>
-      </div>
-      </div>
+     <Materials/>
     </div>
 
   </section>
@@ -290,26 +257,7 @@ onBeforeMount(async () => {
           </svg>
         </div>
       </div>
-      <div class="grid grid-cols-1 md:grid-cols-4 gap-3 w-full">
-        <div @click="navigateTo(`/services/${item.slug}`)" v-for="item in services" :style="{ backgroundImage: `url(${item.image})` }" class=" cursor-pointer hover:!bg-none flex flex-col items-start justify-between bg-no-repeat bg-center bg-cover p-10 rounded-[10px] h-[340px] group border">
-          <div class="grid grid-cols-4 items-start w-full">
-            <div class="col-span-3">
-              <div class="flex flex-start gap-4 text-white group-hover:text-black">
-                <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <circle cx="9" cy="9" r="9" fill="#FF550A"/>
-                </svg>
-                <p>{{item.name}}</p>
-              </div>
-            </div>
-            <div class="hidden group-hover:flex h-[60px] w-[60px] bg-black  items-center justify-center rounded-full justify-self-end">
-              <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M2.37029 14.6836L12.6841 4.36976V11.8552L14.6838 11.8552L14.6838 0.955846L3.7845 0.955846L3.7845 2.95554L11.2699 2.95554L0.956072 13.2694L2.37029 14.6836Z" fill="white"/>
-              </svg>
-            </div>
-          </div>
-          <p class="hidden group-hover:block">{{item.short_description}}</p>
-        </div>
-      </div>
+     <Services/>
     </div>
   </section>
   <section class="py-[60px] md:py-[120px]">

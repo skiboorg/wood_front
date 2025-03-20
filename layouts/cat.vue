@@ -1,9 +1,9 @@
 <script setup lang="ts">
 useSeoMeta({
-  title: 'site',
-  ogTitle: 'site',
-  description: 'site',
-  ogDescription: 'site',
+  title: 'VSM - пиломатериалы в Москва и области, доступные цены и гарантия качества!',
+  ogTitle: 'VSM - пиломатериалы в Москва и области, доступные цены и гарантия качества!',
+  description: 'VSM - пиломатериалы в Москва и области, доступные цены и гарантия качества!',
+  ogDescription: 'VSM - пиломатериалы в Москва и области, доступные цены и гарантия качества!',
 })
 const items = ref([
   { label: 'Главная', route: '/' },

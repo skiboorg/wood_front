@@ -8,6 +8,7 @@ const route = useRoute()
 const category = ref(null)
 const products = ref([])
 const selected_subcat = ref(null)
+const html_content = ref('')
 const {category_slug,subcategory_slug} = route.params
 
 onMounted(async () => {
@@ -32,6 +33,7 @@ onMounted(async () => {
 const fetchSubCategory = async () => {
   const resp  = await $api(`/api/shop/subcategory/${selected_subcat.value}`)
   products.value = resp.products
+  html_content.value = resp.html_content
 }
 
 const subcatChange = async (subcat_slug) => {
@@ -57,6 +59,8 @@ const subcatChange = async (subcat_slug) => {
     <SubcategoriesBtns :subcategories="category.sub_categories" :selected="selected_subcat" @change="subcatChange"/>
 
     <ItemsGrid :products="products"/>
+    <div v-if="html_content" v-html="html_content" class="mt-10"></div>
+
   </div>
 </template>
 

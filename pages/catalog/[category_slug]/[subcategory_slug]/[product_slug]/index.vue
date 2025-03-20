@@ -10,6 +10,7 @@ const selected_thin = ref({})
 const selected_width = ref({})
 const name = ref(null)
 const phone = ref(null)
+const comment = ref(null)
 const visible = ref(false)
 const loading = ref(false)
 const is_send = ref(false)
@@ -62,7 +63,8 @@ const sendForm = async () => {
     body: {
       name: name.value,
       phone: phone.value,
-      product:selected_product_string.value
+      product:selected_product_string.value,
+      comment:comment.value
     }
   })
   is_send.value = true
@@ -71,23 +73,26 @@ const sendForm = async () => {
 </script>
 
 <template>
-  <Dialog v-model:visible="visible" modal header="Заявка" class="w-10/12 md:w-1/2" @after-hide="is_send=false">
+  <Dialog v-model:visible="visible" modal header="Формирование заявки" class="w-10/12 md:w-1/2" @after-hide="is_send=false">
     <template v-if="is_send">
       <p class="text-center font-bold text-2xl">Заявка отправлена</p>
     </template>
     <template v-else>
-      <span class="text-surface-500 dark:text-surface-400 block mb-8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consectetur facilis id molestiae temporibus? Aliquid consequatur cumque dolorem eligendi hic itaque libero nisi officiis perferendis placeat, reiciendis tenetur ut voluptatibus.</span>
-      <div class="flex items-center gap-4 mb-4">
-        <label for="username" class="font-semibold w-24">ФИО</label>
-        <InputText id="username" v-model="name" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex items-center gap-4 mb-8">
-        <label for="email" class="font-semibold w-24">Телефон</label>
-        <InputText id="email" v-model="phone" class="flex-auto" autocomplete="off" />
-      </div>
-      <div class="flex justify-end gap-2">
+      <span class="text-surface-500 dark:text-surface-400 block mb-8">
+        Укажите ваши контактные данные и напишите комметарий - мы свяжемся с вами в ближайшее время, чтобы уточнить ваш заказ, а так же добавить в него по необходиомсти новые позиции!
+      </span>
+      <div class="flex gap-4 mb-4">
+        <InputText id="username" v-model="name" class="flex-auto" autocomplete="off" placeholder="Ваше имя" />
 
-        <Button :disabled="!phone" type="button" label="Отправить" @click="sendForm"/>
+        <InputMask id="email" v-model="phone" mask="+7 (999) 999-99-99" placeholder="Ваш телефон*"  />
+      </div>
+
+
+        <Textarea fluid id="comment" v-model="comment" class="flex-auto" autocomplete="off" placeholder="Комментарий к заявке" />
+
+      <div class="flex justify-center mt-4">
+
+        <Button rounded :disabled="!phone" type="button" label="Сформировать заявку" class="!px-6 !py-3"  @click="sendForm"/>
       </div>
     </template>
 
@@ -154,7 +159,7 @@ const sendForm = async () => {
             <span class="pi pi-minus" />
           </template>
         </InputNumber>
-          <Button severity="primary" icon="pi pi-chevron-right" rounded @click="visible = true"/>
+          <Button severity="primary" label="Оформить заказ" class="!px-6 py-4" icon-pos="right" icon="pi pi-chevron-right" rounded @click="visible = true"/>
         </div>
       </div>
     </div>

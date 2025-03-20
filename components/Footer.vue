@@ -43,13 +43,13 @@
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 pb-10 border-b mb-10 gap-10">
     <div class="flex flex-col items-start justify-start gap-1">
       <p class="font-semibold text-sm mb-4">Карта сайта</p>
-      <nuxt-link class="opacity-60" to="/">О нас</nuxt-link>
-      <nuxt-link class="opacity-60" to="/">Оплата и доставкас</nuxt-link>
-      <nuxt-link class="opacity-60" to="/">Полезная информация</nuxt-link>
-      <nuxt-link class="opacity-60" to="/">Поставщикам</nuxt-link>
-      <nuxt-link class="opacity-60" to="/">Контакты</nuxt-link>
-      <nuxt-link class="opacity-60" to="/">Услуги</nuxt-link>
-      <nuxt-link class="opacity-60" to="/">Статьи</nuxt-link>
+      <nuxt-link class="opacity-60" to="/about">О нас</nuxt-link>
+      <nuxt-link class="opacity-60" to="/delivery">Оплата и доставкас</nuxt-link>
+<!--      <nuxt-link class="opacity-60" to="/">Полезная информация</nuxt-link>-->
+<!--      <nuxt-link class="opacity-60" to="/">Поставщикам</nuxt-link>-->
+      <nuxt-link class="opacity-60" to="/contacts">Контакты</nuxt-link>
+      <nuxt-link class="opacity-60" to="/services">Услуги</nuxt-link>
+
     </div>
     <div class="flex flex-col items-start justify-start gap-1">
       <p class="font-semibold text-sm mb-4">Контактная информация</p>
