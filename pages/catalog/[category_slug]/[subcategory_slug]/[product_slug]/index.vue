@@ -142,6 +142,10 @@ const sendForm = async () => {
           </button>
         </div>
       </div>
+        <div class="mt-4">
+          <p class="font-semibold">Длина</p>
+          <button class="px-4 py-2 border rounded-lg border-primary text-primary">6000 мм</button>
+        </div>
       <p v-if="product.can_cut" class="text-orange-500 mt-2">✂ Нарежем доски по длине под ваши размеры!</p>
       </div>
       <div class="mt-6">
@@ -151,7 +155,7 @@ const sendForm = async () => {
         </div>
 
         <div class="flex items-end gap-4 ">
-        <InputNumber v-model="amount" inputId="horizontal-buttons"  showButtons buttonLayout="horizontal" suffix=" м2" :min="0.1" :step="0.1" mode="decimal" class="text-center" >
+        <InputNumber v-model="amount" inputId="horizontal-buttons"  showButtons buttonLayout="horizontal"  :min="0.1" :step="0.1" mode="decimal" class="text-center" >
           <template #incrementbuttonicon>
             <span class="pi pi-plus" />
           </template>
@@ -175,10 +179,36 @@ const sendForm = async () => {
             <div v-html="product.description"></div>
           </TabPanel>
           <TabPanel value="1">
-            <p class="m-0">
-              Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim
-              ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.
-            </p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div class="border rounded-[20px] p-10">
+                <p class="font-semibold text-lg mb-10">Доставка</p>
+                <p class="opacity-60">
+                  Вы сможете получить ваш товар различными способами доставки:<br><br>
+
+                  - бесплатный самовывоз с одного из наших складов (они все находятся в пределах 2км от МКАД)<br>
+                  - доставка нашим транспортом в пределах Москвы и МО<br>
+                  - доставка любой транспортной кампанией на ваш выбор<br><br>
+
+                  Для уточнения деталей и стоимости доставки вы можете связаться с нами по указанным контактам, или же мы сами с вами свяжемся после оформления вами заказа на нашем сайте!
+                </p>
+
+              </div>
+              <div class="border rounded-[20px] p-10">
+                <p class="font-semibold text-lg mb-10">Оплата</p>
+                <p class="opacity-60">
+                  Мы предлагаем произвести оплату удобным для вас образом:<br><br>
+
+                  - наличными нашему водителю после доставки;<br>
+                  - онлайн с помощью банковской карты;<br>
+                  - СБП;<br>
+                  - безналичным способом (для юр. лиц)<br><br>
+
+                  Мы работаем как по предоплате, так и по постоплате: все зависит от конкретных позиций в заказе!
+                </p>
+
+              </div>
+
+            </div>
           </TabPanel>
         </TabPanels>
       </Tabs>

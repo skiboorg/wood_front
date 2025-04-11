@@ -54,9 +54,10 @@
     <div class="flex flex-col items-start justify-start gap-1">
       <p class="font-semibold text-sm mb-4">Контактная информация</p>
       <a class="font-semibold border-b border-black" href="mailto:info@vsmprom.ru">info@vsmprom.ru</a>
-      <p class="font-semibold">Ежедневно с 9.00 до 21.00</p>
-      <p class="opacity-60" >Юридический адрес: г.Химки, ул.Заводская, д.2А, помещение 4, комнаты 37,38.<br><br>
-        ИНН: 18249879821748</p>
+      <a class="font-semibold border-b border-black mb-3" href="tel:+79268994444">+7 (926) 899 44 44</a>
+
+      <p class="opacity-60" >ООО "ВСМ"<br>
+        ИНН: 7733318950</p>
     </div>
   </div>
   <div class="flex flex-wrap items-center justify-between pb-10 ">

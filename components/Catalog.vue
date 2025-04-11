@@ -11,10 +11,10 @@ onBeforeMount(async () => {
 
 <template>
   <div class="grid grid-cols-1 md:grid-cols-4 gap-5">
-    <div class="bg-[#efefef] rounded-xl p-7 relative h-[430px] flex flex-col items-start justify-between group"
+    <div class="bg-[#efefef] rounded-xl p-7 relative h-[430px] z-0 flex flex-col items-start justify-between group overflow-hidden"
          v-for="category in categories" :key="category.id">
       <div>
-        <img class="absolute top-0 right-0" :src="category.image" alt="">
+        <img class=" object-contain absolute top-0 right-0 left-0 bottom-0 -z-10" :src="category.image" alt="">
         <p class="text-xl font-medium w-[50%] mb-4">{{category.name}}</p>
         <p v-if="category.display_amount" class="text-sm text-[#7E7E7E]">{{category.display_amount}} товаров</p>
       </div>
