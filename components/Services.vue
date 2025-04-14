@@ -17,7 +17,7 @@ onBeforeMount(async () => {
             <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="9" cy="9" r="9" fill="#FF550A"/>
             </svg>
-            <p>{{item.name}}</p>
+            <p class="font-bold text-2xl">{{item.name}}</p>
           </div>
         </div>
         <div class="hidden group-hover:flex h-[60px] w-[60px] bg-black  items-center justify-center rounded-full justify-self-end">
@@ -26,7 +26,7 @@ onBeforeMount(async () => {
           </svg>
         </div>
       </div>
-      <p class="hidden group-hover:block">{{item.short_description}}</p>
+      <p class="text-white font-semibold group-hover:text-black">{{item.short_description}}</p>
     </div>
   </div>
 </template>

@@ -5,7 +5,10 @@ const {$api} = useNuxtApp()
 const route = useRoute()
 const product = ref({})
 const uniqueThinNames = ref([])
+const uniqueClassNames = ref([])
+const thins = ref([])
 const widths = ref([])
+const selected_class_type = ref({})
 const selected_thin = ref({})
 const selected_width = ref({})
 const name = ref(null)
@@ -19,18 +22,18 @@ const amount = ref(1)
 const {product_slug} = route.params
 onMounted(async () => {
       product.value = await $api(`/api/shop/product/${product_slug}`)
-      uniqueThinNames.value = product.value.units.reduce((acc, unit) => {
-        if (!acc.some(item => item.label === unit.thin.name)) {
-          // Добавляем новый объект
-          acc.push({
-            label: unit.thin.name,
-            id: unit.thin.id,
-            selected: false
-          });
-        }
-        return acc;
-      }, []);
-      thinChange(uniqueThinNames.value[0])
+  uniqueClassNames.value = product.value.units.reduce((acc, unit) => {
+    if (!acc.some(item => item.label === unit.class_type.name)) {
+      // Добавляем новый объект
+      acc.push({
+        label: unit.class_type.name,
+        id: unit.class_type.id,
+        selected: false
+      });
+    }
+    return acc;
+  }, []);
+  classChange(uniqueClassNames.value[0])
   items.value = [
     { label: 'Главная', route: '/' },
     { label: 'Каталог', route: '/catalog' },
@@ -44,7 +47,10 @@ onMounted(async () => {
 
 const selected_product_string = computed(()=>{
   if(!selected_width.value) return
-  return `Толщина ${selected_thin.value.label} мм, ширина ${selected_width.value.width.name} мм, кол-во ${amount.value}`
+  return `Класс ${selected_class_type.value.label}
+  Толщина ${selected_thin.value.label} мм, ширина ${selected_width.value.width?.name} мм,
+   длина ${selected_width.value.length?.name},
+    кол-во ${amount.value}`
 })
 
 
@@ -54,6 +60,26 @@ const thinChange =  (thin) => {
   widths.value = product.value.units.filter(unit => unit.thin.id === selected_thin.value.id)
   selected_thin.value.selected = true;
   selected_width.value = widths.value[0]
+}
+
+const classChange =  (class_type) => {
+  selected_class_type.value.selected = false;
+  selected_class_type.value =  class_type;
+  thins.value = product.value.units.filter(unit => unit.class_type.id === selected_class_type.value.id)
+  uniqueThinNames.value = thins.value.reduce((acc, unit) => {
+    if (!acc.some(item => item.label === unit.thin.name)) {
+      // Добавляем новый объект
+      acc.push({
+        label: unit.thin.name,
+        id: unit.thin.id,
+        selected: false
+      });
+    }
+    return acc;
+  }, []);
+  selected_class_type.value.selected = true;
+  selected_thin.value = thins.value[0]
+  thinChange(uniqueThinNames.value[0])
 }
 
 const sendForm = async () => {
@@ -100,6 +126,7 @@ const sendForm = async () => {
 
     <div class="container">
      <Breadcrumbs :items="items"/>
+      {{selected_product_string}}
       <h1 class="text-4xl font-medium mb-10 ">{{product.name}}</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <Galleria :value="product.images" :numVisible="1"  :showThumbnails="false"
@@ -113,10 +140,23 @@ const sendForm = async () => {
     <!-- Правая часть: Описание товара -->
     <div class="flex flex-col items-start justify-between">
       <div>
-      <div class="grid grid-cols-2 mb-2"  v-for="item in product.features" :key="item.id">
+      <div class="grid grid-cols-2 mb-2"  v-for="item in product.features_detail" :key="item.id">
         <p class="text-gray-500 border-b border-dashed">{{item.label}}</p>
         <p >{{item.value}}</p>
       </div>
+        <div class="mt-4">
+          <p class="font-semibold">Класс</p>
+          <div class="flex space-x-2 mt-1">
+
+            <button class="px-4 py-2 border rounded-lg"
+                    :class="item.selected ? 'border-primary text-primary' : ''"
+                    v-for="item in uniqueClassNames"
+                    @click="classChange(item)"
+                    :key="item.id">
+              {{item.label}}
+            </button>
+          </div>
+        </div>
         <div class="mt-4">
           <p class="font-semibold">Толщина</p>
           <div class="flex space-x-2 mt-1">
@@ -144,7 +184,7 @@ const sendForm = async () => {
       </div>
         <div class="mt-4">
           <p class="font-semibold">Длина</p>
-          <button class="px-4 py-2 border rounded-lg border-primary text-primary">6000 мм</button>
+          <button class="px-4 py-2 border rounded-lg border-primary text-primary">{{selected_width.length?.name}} мм</button>
         </div>
       <p v-if="product.can_cut" class="text-orange-500 mt-2">✂ Нарежем доски по длине под ваши размеры!</p>
       </div>
