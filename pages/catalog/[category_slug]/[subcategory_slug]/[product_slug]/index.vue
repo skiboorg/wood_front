@@ -57,7 +57,8 @@ const selected_product_string = computed(()=>{
 const thinChange =  (thin) => {
   selected_thin.value.selected = false;
   selected_thin.value = thin;
-  widths.value = product.value.units.filter(unit => unit.thin.id === selected_thin.value.id)
+  console.log(selected_class_type.value)
+  widths.value = product.value.units.filter(unit => unit.thin.id === selected_thin.value.id && unit.class_type.id===selected_class_type.value.id)
   selected_thin.value.selected = true;
   selected_width.value = widths.value[0]
 }
@@ -126,7 +127,7 @@ const sendForm = async () => {
 
     <div class="container">
      <Breadcrumbs :items="items"/>
-      {{selected_product_string}}
+<!--      {{selected_product_string}}-->
       <h1 class="text-4xl font-medium mb-10 ">{{product.name}}</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <Galleria :value="product.images" :numVisible="1"  :showThumbnails="false"
