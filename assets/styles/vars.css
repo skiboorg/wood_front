@@ -3,6 +3,7 @@
     --success-color-hover: #e65c34;    /* Цвет при наведении */
     --success-color-text: #FFFFFF;
     --p-button-label-font-weight: 500 !important;/* Цвет текста */
+    --p-breadcrumb-gap: 0.2rem !important;
 }
 
 .p-breadcrumb{

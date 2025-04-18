@@ -128,7 +128,7 @@ const sendForm = async () => {
     <div class="container">
      <Breadcrumbs :items="items"/>
 <!--      {{selected_product_string}}-->
-      <h1 class="text-4xl font-medium mb-10 ">{{product.name}}</h1>
+      <h1 class="text-2xl md:text-4xl font-medium mb-10 ">{{product.name}}</h1>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
     <Galleria :value="product.images" :numVisible="1"  :showThumbnails="false"
               :circular="true" :autoPlay="true" :transitionInterval="2000"
@@ -147,7 +147,7 @@ const sendForm = async () => {
       </div>
         <div class="mt-4">
           <p class="font-semibold">Класс</p>
-          <div class="flex space-x-2 mt-1">
+          <div class="flex flex-wrap gap-2 mt-1">
 
             <button class="px-4 py-2 border rounded-lg"
                     :class="item.selected ? 'border-primary text-primary' : ''"
@@ -160,7 +160,7 @@ const sendForm = async () => {
         </div>
         <div class="mt-4">
           <p class="font-semibold">Толщина</p>
-          <div class="flex space-x-2 mt-1">
+          <div class="flex flex-wrap gap-2 mt-1">
 
             <button class="px-4 py-2 border rounded-lg"
                     :class="item.selected ? 'border-primary text-primary' : ''"
@@ -173,7 +173,7 @@ const sendForm = async () => {
         </div>
       <div class="mt-4">
         <p class="font-semibold">Ширина</p>
-        <div class="flex space-x-2 mt-1">
+        <div class="flex flex-wrap gap-2 mt-1">
           <button class="px-4 py-2 border rounded-lg"
                   :class="selected_width.id === item.id ? 'border-primary text-primary' : ''"
                   v-for="item in widths"
@@ -189,14 +189,14 @@ const sendForm = async () => {
         </div>
       <p v-if="product.can_cut" class="text-orange-500 mt-2">✂ Нарежем доски по длине под ваши размеры!</p>
       </div>
-      <div class="mt-6">
+      <div class="mt-6 w-full md:w-auto">
         <div class="flex items-end gap-4 mb-4">
           <p class="text-2xl font-bold">{{selected_width.price}} {{selected_width.price_description}}</p>
           <p v-if="selected_width.add_price" class="text-gray-500">{{selected_width.add_price}}</p>
         </div>
 
-        <div class="flex items-end gap-4 ">
-        <InputNumber v-model="amount" inputId="horizontal-buttons"  showButtons buttonLayout="horizontal"  :min="0.1" :step="0.1" mode="decimal" class="text-center" >
+        <div class="grid grid-cols-1 md:grid-cols-2 items-end gap-4 ">
+        <InputNumber fluid v-model="amount" inputId="horizontal-buttons"  showButtons buttonLayout="horizontal"  :min="0.1" :step="0.1" mode="decimal">
           <template #incrementbuttonicon>
             <span class="pi pi-plus" />
           </template>
@@ -204,7 +204,7 @@ const sendForm = async () => {
             <span class="pi pi-minus" />
           </template>
         </InputNumber>
-          <Button severity="primary" label="Оформить заказ" class="!px-6 py-4" icon-pos="right" icon="pi pi-chevron-right" rounded @click="visible = true"/>
+          <Button fluid severity="primary" label="Оформить заказ" class="!px-6 py-4" icon-pos="right" icon="pi pi-chevron-right" rounded @click="visible = true"/>
         </div>
       </div>
     </div>
