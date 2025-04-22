@@ -2,6 +2,8 @@
 const {$api} = useNuxtApp()
 
 const faq = ref([])
+const popular = ref([])
+const banner = ref([])
 
 const feedback = [
   {date:'11 февраля 2025',text:'Приезжали выбрать материал. Большой ассортимент материала, приветливые менеджеры, стильный офис. Спасибо за консультацию и качественный товар. Рекомендуем',name:'Рустамбек Хамидов'},
@@ -12,6 +14,8 @@ const feedback = [
 ]
 onBeforeMount(async () => {
   faq.value = await $api('/api/data/faq')
+  popular.value = await $api('/api/shop/popular')
+  banner.value = await $api('/api/data/banners')
 })
 </script>
 
@@ -51,7 +55,7 @@ onBeforeMount(async () => {
         </div>
 
 
-        <div class="grid grid-cols-1 md:grid-cols-2 w-full">
+        <div class="grid grid-cols-1 md:grid-cols-2 w-full ">
           <div class="flex flex-col md:flex-row items-end gap-4">
             <a href="https://wa.me/+79268994444" target="_blank" class="block w-full md:w-auto">
               <Button class="!px-6 !py-3 w-full md:w-auto"   rounded label="Рассчитать стоимость для вас" />
@@ -72,9 +76,11 @@ onBeforeMount(async () => {
             </a>
 
           </div>
-          <div class="hidden md:flex items-end gap-4 justify-self-end">
-            <img src="~assets/of1.png" alt="">
-            <img src="~assets/of2.png" alt="">
+          <div class="hidden md:flex items-end gap-4 justify-self-end"
+               @click="banner[0]?.link ? navigateTo(banner[0]?.link) : null"
+               :class="banner[0]?.link ? 'cursor-pointer' : ''">
+<!--            <img src="~assets/of2.png" alt="">-->
+            <img class="w-full  object-cover" :src="banner[0]?.image" alt="">
           </div>
         </div>
       </div>
@@ -97,6 +103,25 @@ onBeforeMount(async () => {
 
       </div>
       <Catalog/>
+    </div>
+  </section>
+  <section class="pb-[60px] md:pb-[120px]">
+    <div class="container">
+      <div class="flex items-center justify-between mb-10">
+        <div class="">
+          <p class="font-bold text-3xl md:text-7xl uppercase">Популярные товары</p>
+        </div>
+        <div class="hidden md:block">
+          <svg width="79" height="56" viewBox="0 0 79 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="22" cy="28" r="22" fill="#0F4B29"/>
+            <circle cx="51" cy="28" r="25" fill="#FF550A" stroke="white" stroke-width="6"/>
+          </svg>
+        </div>
+
+
+      </div>
+      <ItemsGrid :products="popular"/>
+
     </div>
   </section>
   <section class="bg-[#efefef] py-[60px] md:py-[120px]">
